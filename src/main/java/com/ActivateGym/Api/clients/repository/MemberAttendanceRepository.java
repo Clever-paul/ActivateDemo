@@ -1,4 +1,7 @@
 package com.ActivateGym.Api.clients.repository;
 
-public interface MemberAttendanceRepository {
+import com.ActivateGym.Api.clients.domain.entity.MemberAttendance;
+import org.springframework.data.repository.CrudRepository;
+
+public interface MemberAttendanceRepository extends CrudRepository<MemberAttendance, Long> {
 }
