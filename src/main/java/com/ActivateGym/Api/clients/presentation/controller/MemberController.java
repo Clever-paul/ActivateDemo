@@ -27,6 +27,7 @@ public class MemberController {
 
 
     @GetMapping("/dni/{dni}")
+    @PreAuthorize(value = "hasRole('ADMIN')")
     public ResponseEntity<Member> getMemberByDni(@PathVariable("dni") String dni) {
         Optional<Member> member = memberService.findByDni(dni);
         return member.map(ResponseEntity::ok)
@@ -35,6 +36,7 @@ public class MemberController {
 
     // Obtener un miembro por su nombre
     @GetMapping("/name/{nombre}")
+    @PreAuthorize(value = "hasRole('ADMIN')")
     public ResponseEntity<List<Member>> getMemberByName(@PathVariable("nombre") String nombre) {
         List<Member> members = memberService.findByNombre(nombre);
         if (members.isEmpty()) {
@@ -46,6 +48,7 @@ public class MemberController {
 
     // Crear un nuevo miembro
     @PostMapping
+    @PreAuthorize(value = "hasRole('ADMIN')")
     public ResponseEntity<Member> createMember(@RequestBody Member member) {
         Member savedMember = memberService.saveMember(member);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedMember);
@@ -53,6 +56,7 @@ public class MemberController {
 
     // Actualizar un miembro por DNI
     @PutMapping("/{dni}")
+    @PreAuthorize(value = "hasRole('ADMIN')")
     public ResponseEntity<Member> updateMemberByDni(@PathVariable("dni") String dni, @RequestBody Member member) {
         Optional<Member> updatedMember = memberService.updateByDni(dni, member);
         return updatedMember.map(ResponseEntity::ok)
