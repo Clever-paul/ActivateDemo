@@ -5,6 +5,7 @@ import com.ActivateGym.Api.clients.domain.entity.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,6 +19,7 @@ public class MemberController {
     private MemberService memberService;
 
     @GetMapping("/list")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<List<Member>> getAllMembers() {
         List<Member> members = memberService.findAll();
         return ResponseEntity.ok(members);

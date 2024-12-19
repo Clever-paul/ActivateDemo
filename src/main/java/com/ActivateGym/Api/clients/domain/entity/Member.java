@@ -31,22 +31,6 @@ public class Member {
     @OneToMany(mappedBy = "member")
     private List<MemberMembership> memberMembershipList;
 
-    /*public Member(String dni, String nombre, String apellido) {
-        this.dni = dni;
-        this.nombre = nombre;
-        this.apellido = apellido;
-    }
-
-    public Member(String dni, String nombre, String telefono, String apellido, LocalDate fechaNacimiento, String direccion, List<MemberMembership> memberMembershipList) {
-        this.dni = dni;
-        this.nombre = nombre;
-        this.telefono = telefono;
-        this.apellido = apellido;
-        this.fechaNacimiento = fechaNacimiento;
-        this.direccion = direccion;
-        this.memberMembershipList = memberMembershipList;
-    }*/
-
     public Long getId() {
         return id;
     }

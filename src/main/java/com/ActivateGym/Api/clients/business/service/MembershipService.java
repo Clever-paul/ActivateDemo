@@ -1,10 +1,12 @@
 package com.ActivateGym.Api.clients.business.service;
 
 import com.ActivateGym.Api.clients.domain.entity.Membership;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public interface MembershipService {
     //crear nueva membresia
     Membership saveNewMembership(Membership membership);
